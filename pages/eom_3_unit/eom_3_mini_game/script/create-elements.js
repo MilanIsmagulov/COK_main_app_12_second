@@ -432,7 +432,7 @@ function createAnswer_Type1(question, i){
         elChD.appendChild(elChDChA);
         el.appendChild(elChD);
 
-        if (answerText.length > 60) el.appendChild(createLoupe("resize_btn_type_1_answer"));
+        if (answerText.length > 60 && false) el.appendChild(createLoupe("resize_btn_type_1_answer"));
     }
 
     if (question.answered){
@@ -1333,7 +1333,7 @@ function createContentElement_Type6(content, side, index, questionId) {
         contentEl = document.createElement("div");
         contentEl.innerText = content.value;
         contentEl.classList.add('question_type_6_text_content');
-        if (content.value.length > 20) {
+        if (content.value.length > 20 && false ) {
             contentIsNeedLoupe = true
             loupeClasses = loupeClasses + " resize_btn_type_6_text"
         }
@@ -1360,9 +1360,6 @@ function createContentElement_Type6(content, side, index, questionId) {
 
     return contentContainer;
 }
-
-
-
 function createSVG_Type6(itemCount, userAnswers) {
     // Create global SVG
     var globalDraw = SVG().addTo('.question_type_6_mapping').size('100%', '100%').attr({ style: 'position: absolute; top: 0; left: 0;' });
@@ -1391,7 +1388,6 @@ function createSVG_Type6(itemCount, userAnswers) {
     // Save data for access from other functions
     window.type6Data = type6Data;
 }
-
 function createSVGElements_Type6(index, userAnswers, type6Data) {
     // Извлекаем переменные из type6Data
     var {globalDraw, mappingRect, circles, lines, startPositions, occupiedTargets, circleOccupancy, draggableEnabled, itemCount} = type6Data;
@@ -1695,7 +1691,6 @@ function createBodyPopUp_Type7(question) {
 
     return el;
 }
-
 function createContentElement_Type7(content, position, index, questionId) {
     // Создаем контейнер для контента
     let contentContainer = document.createElement('div');
@@ -1713,7 +1708,7 @@ function createContentElement_Type7(content, position, index, questionId) {
         contentEl.innerText = content.value;
         contentEl.classList.add('question_type_7_text_content');
         // Если текст длинный, добавляем кнопку лупы
-        if (content.value.length > 70) {
+        if (content.value.length > 70 && false) {
             contentIsNeedLoupe = true
             loupeClasses = loupeClasses + " resize_btn_type_6_text"
         }
@@ -1739,7 +1734,6 @@ function createContentElement_Type7(content, position, index, questionId) {
 
     return contentContainer;
 }
-
 function createSVG_Type7(itemCount, userAnswers) {
     // Создаем глобальный SVG
     var globalDraw = SVG().addTo('.question_type_7_mapping').size('100%', '100%').attr({ style: 'position: absolute; top: 0; left: 0; z-index: 10;' });
@@ -1768,7 +1762,6 @@ function createSVG_Type7(itemCount, userAnswers) {
     // Сохраняем данные для доступа из других функций
     window.type7Data = type7Data;
 }
-
 function createSVGElements_Type7(index, userAnswers, type7Data) {
     // Извлекаем переменные из type7Data
     var { globalDraw, mappingRect, circles, smallCircles, lines, startPositions, occupiedTargets, circleOccupancy, draggableEnabled, itemCount } = type7Data;
@@ -1790,7 +1783,6 @@ function createSVGElements_Type7(index, userAnswers, type7Data) {
     // Создаем и инициализируем круг
     createSVGCircle_Type7(index, userAnswers, type7Data);
 }
-
 function createSVGCircle_Type7(index, userAnswers, type7Data) {
     var { globalDraw, mappingRect, circles, smallCircles, lines, startPositions, occupiedTargets, circleOccupancy, draggableEnabled, itemCount } = type7Data;
     let startX = startPositions[index].x;
@@ -1843,14 +1835,12 @@ function createSVGCircle_Type7(index, userAnswers, type7Data) {
         circle.css({ cursor: 'default' });
     }
 }
-
 function onCircleDrag_Type7(e, circleElement, index, type7Data) {
     var { lines, startPositions } = type7Data;
     let newX = circleElement.cx();
     let newY = circleElement.cy();
     lines[index].plot(startPositions[index].x, startPositions[index].y, newX, newY);
 }
-
 function onCircleDragEnd_Type7(e, circleElement, index, type7Data) {
     var { mappingRect, itemCount, circles, lines, startPositions, occupiedTargets, circleOccupancy } = type7Data;
     let newX = circleElement.cx();
@@ -1929,7 +1919,6 @@ function onCircleDragEnd_Type7(e, circleElement, index, type7Data) {
         }
     }
 }
-
 function addAnswerClass_Type7(endPoint, index) {
     let userAnswers = allQuestions[currentQuestionId].answered;
     let question = allQuestions[currentQuestionId];
@@ -1947,7 +1936,6 @@ function addAnswerClass_Type7(endPoint, index) {
         endPoint.classList.add('wrong-answer');
     }
 }
-
 function updateSVG_Type7() {
     var type7Data = window.type7Data;
     if (!type7Data) return; // Если данные не инициализированы, выходим из функции
